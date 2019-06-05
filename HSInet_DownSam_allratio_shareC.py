@@ -5,7 +5,7 @@ Created on Fri Jul 20 23:05:10 2018
 @author: XieQi
 """
 import tensorflow as tf
-import tensorflow.contrib.slim as slim
+slim = tf.contrib.slim
 
 def leaky_relu(x):
     return tf.where(tf.greater(x, 0), x, 0.01 * x)
