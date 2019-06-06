@@ -100,10 +100,10 @@ def test(ini):
     ## 变为4D张量 banchsize H W C
     
     inZ = np.expand_dims(Z, axis = 0)
-    inZ = tf.to_float(inZ);
+    inZ = tf.to_float(inZ)
     
     inX = np.expand_dims(X, axis = 0)
-    inX = tf.to_float(inX);
+    inX = tf.to_float(inX)
     
     
     iniData2= sio.loadmat("CAVEdata/iniUp")
@@ -160,10 +160,10 @@ def testGAN(ini):
     ## 变为4D张量 banchsize H W C
     
     inZ = np.expand_dims(Z, axis = 0)
-    inZ = tf.to_float(inZ);
+    inZ = tf.to_float(inZ)
     
     inX = np.expand_dims(X, axis = 0)
-    inX = tf.to_float(inX);
+    inX = tf.to_float(inX)
     
     
     iniData2= sio.loadmat("CAVEdata/iniUp")
@@ -533,7 +533,7 @@ def testAllGAN():
                 data = sio.loadmat("CAVEdata/Z/"+files[i])
                 inZ  = data['Zmsi']
                 inZ  = np.expand_dims(inZ, axis = 0)
-                inZ = tf.to_float(inZ);
+                inZ = tf.to_float(inZ)
                 inZ = sess.run(inZ)
 #                print(inZ.shape)
                 pred_X,ListX = sess.run([outX, X1],feed_dict={Z:inZ})  
@@ -542,7 +542,7 @@ def testAllGAN():
                 data = sio.loadmat("CAVEdata/X/"+files[i])
                 inX    = data['msi']   
                 inX  = np.expand_dims(inX, axis = 0)
-                inX = tf.to_float(inX);
+                inX = tf.to_float(inX)
                 inX = sess.run(inX)
                 psnr = skimage.measure.compare_psnr(inX, pred_X)
                 print(files[i] + ' done!'+' psnr=%.4f', psnr)
