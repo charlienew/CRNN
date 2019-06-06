@@ -489,7 +489,7 @@ def testAll():
                 data = sio.loadmat("CAVEdata/Z/"+files[i])
                 inZ  = data['Zmsi']
                 inZ  = np.expand_dims(inZ, axis = 0)
-                inZ = tf.to_float(inZ);
+                inZ = tf.to_float(inZ)
                 inZ = sess.run(inZ)
 #                print(inZ.shape)
                 pred_X,ListX = sess.run([outX, X1],feed_dict={Z:inZ})  
@@ -498,7 +498,7 @@ def testAll():
                 data = sio.loadmat("CAVEdata/X/"+files[i])
                 inX    = data['msi']   
                 inX  = np.expand_dims(inX, axis = 0)
-                inX = tf.to_float(inX);
+                inX = tf.to_float(inX)
                 inX = sess.run(inX)
                 psnr = skimage.measure.compare_psnr(inX, pred_X)
                 print(files[i] + ' done!'+' psnr=%.4f', psnr)
@@ -507,8 +507,8 @@ def testAll():
 
 def testAllGAN():
     ## 变为4D张量 banchsize H W C
-    iniData2= sio.loadmat("CAVEdata/iniUp");
-    iniUp3x3 = iniData2['iniUp1'];
+    iniData2= sio.loadmat("CAVEdata/iniUp")
+    iniUp3x3 = iniData2['iniUp1']
     List = sio.loadmat('CAVEdata/List')
     Ind  = List['Ind']
     Z       = tf.placeholder(tf.float32, shape=(1, 512/2, 512/2, FLAGS.outDim))
